@@ -18,7 +18,7 @@ function limpar() {
     sinal = "";
     operacao = "";
     resultado = 0;
-    output.innerHTML = numeros;
+    output.innerHTML = "";
 }
 
 function del() {
@@ -27,11 +27,12 @@ function del() {
 }
 
 function inserirSinal(operacao) {
-    if (numeros.charAt(numeros.length - 1) == "+" ||
-        numeros.charAt(numeros.length - 1) == "-" ||
-        numeros.charAt(numeros.length - 1) == "X" ||
-        numeros.charAt(numeros.length - 1) == "/" ||
-        numeros.charAt(numeros.length - 1) == "%") {
+    const lastCharOutput = numeros.charAt(numeros.length - 1);
+    if (lastCharOutput == "+" ||
+        lastCharOutput == "-" ||
+        lastCharOutput == "X" ||
+        lastCharOutput == "/" ||
+        lastCharOutput == "%") {
         // console.log("Já possui operador")
         numeros = numeros.slice(0, -1) + operacao;
         output.innerHTML = numeros;
@@ -42,54 +43,17 @@ function inserirSinal(operacao) {
     }
 }
 
-function calcular() {
-    numAntes = "";
-    for (let i = 0; i < numeros.length; i++) {
-        if (numeros.charAt(i) == "+" ||
-            numeros.charAt(i) == "-" ||
-            numeros.charAt(i) == "X" ||
-            numeros.charAt(i) == "/" ||
-            numeros.charAt(i) == "%") {
-            operacao = numeros.charAt(i);
-        } else {
-            if (operacao == "") {
-                numAntes += numeros.charAt(i);
-            } else {
-                numDepois += numeros.charAt(i);
-            }
-        }
+function incluirPonto(){
+    if(numeros.includes('.')){
+        
+    } else {
+        output.innerHTML += '.';
     }
+}
 
-    numAntes = parseFloat(numAntes);
-    numDepois = parseFloat(numDepois);
-
-    switch (operacao) {
-        case "+":
-            resultado = numAntes + numDepois;
-            break;
-        case "-":
-            resultado = numAntes - numDepois;
-            break;
-        case "X":
-            resultado = numAntes * numDepois;
-            break;
-        case "/":
-            resultado = numAntes / numDepois;
-            break;
-        case "%":
-            resultado = (numAntes / 100) * numDepois;
-            break;
-        default:
-            resultado = 0;
-            break;
-    }
-
-    numeros = resultado.toString();
+function calcular(){
+    numeros = String(eval(numeros));
     output.innerHTML = numeros;
-
-    numAntes = resultado.toString();
-    numDepois = "";
-    operacao = "";
 }
 
 
