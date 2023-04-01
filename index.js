@@ -30,7 +30,7 @@ function inserirSinal(operacao) {
     const lastCharOutput = numeros.charAt(numeros.length - 1);
     if (lastCharOutput == "+" ||
         lastCharOutput == "-" ||
-        lastCharOutput == "X" ||
+        lastCharOutput == "*" ||
         lastCharOutput == "/" ||
         lastCharOutput == "%") {
         // console.log("Já possui operador")
@@ -45,11 +45,12 @@ function inserirSinal(operacao) {
 
 function incluirPonto(){
     if(numeros.includes('.')){
-        
+
     } else {
         output.innerHTML += '.';
     }
 }
+
 
 function calcular(){
     numeros = String(eval(numeros));
@@ -106,7 +107,7 @@ btnSubtrair.addEventListener("click", function () {
 });
 
 btnMultiplicar.addEventListener("click", function () {
-    inserirSinal("X");
+    inserirSinal("*");
 });
 
 btnDividir.addEventListener("click", function () {
