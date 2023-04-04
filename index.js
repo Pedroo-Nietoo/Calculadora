@@ -5,6 +5,7 @@ let sinal = "";
 let numeros = "";
 let operacao = "";
 let resultado = 0;
+const lastCharOutput = numeros.charAt(numeros.length - 1);
 
 function show(num) {
     numeros += num;
@@ -27,7 +28,6 @@ function del() {
 }
 
 function inserirSinal(operacao) {
-    const lastCharOutput = numeros.charAt(numeros.length - 1);
     if (lastCharOutput == "+" ||
         lastCharOutput == "-" ||
         lastCharOutput == "*" ||
@@ -43,16 +43,17 @@ function inserirSinal(operacao) {
     }
 }
 
-function incluirPonto(){
-    if(numeros.includes('.')){
+// function incluirPonto() {
+//     if (lastCharOutput == ".") {
 
-    } else {
-        output.innerHTML += '.';
-    }
-}
+//     } else {
+//         numeros += ".";
+//         output.innerHTML += numeros;
+//     }
+// }
 
 
-function calcular(){
+function calcular() {
     numeros = String(eval(numeros));
     output.innerHTML = numeros;
 }

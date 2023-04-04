@@ -20,6 +20,8 @@ body {
             display: flex;
             justify-content: right;
             align-items: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 }
